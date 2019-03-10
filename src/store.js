@@ -24,31 +24,31 @@ export const excercises = [
     {
         id: 'overhead-press',
         title: 'Overhead Press',
-        descriprtion: 'Delts excercise...',
+        description: 'Delts excercise...',
         muscule: 'shoulders'
     },
     {
         id: 'bench-press',
         title: 'Bench Press',
-        descriprtion: 'Chest excercise...',
+        description: 'Chest excercise...',
         muscule: 'chest'
     },
     {
         id: 'barbel-lift',
         title: 'Barbell Press',
-        descriprtion: 'Biceps excercise...',
+        description: 'Biceps excercise...',
         muscule: 'arms'
     },
     {
         id: 'pullup',
         title: 'Pullup',
-        descriprtion: 'Deltas excercise...',
+        description: 'Deltas excercise...',
         muscule: 'back'
     },
     {
         id: 'basic-squad',
         title: 'Basic Squad',
-        descriprtion: 'Legs excercise...',
+        description: 'Legs excercise...',
         muscule: 'legs'
     }
 ]

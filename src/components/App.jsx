@@ -10,7 +10,7 @@ class App extends Component {
   state = {
     excercises,
     category: 'all',
-    selectedExcercise: null
+    selectedExcercise: {}
   }
 
   getExcercisesByMuscule = () => {
