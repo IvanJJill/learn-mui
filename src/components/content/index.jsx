@@ -6,12 +6,13 @@ import styles from './paneStyle';
 import { withStyles } from '@material-ui/core/styles';
 
 class Content extends Component {
+
     render() {
-        const {classes, excercises} = this.props;
+        const {classes, excercises, category, onExcerciseSelect, selectedExcercise} = this.props;
         return (
             <Grid container spacing={16}>
-                <LeftPane styles={classes} excercises={excercises}/>
-                <RightPane styles={classes}/>
+                <LeftPane styles={classes} excercises={excercises} category={category} onSelect={onExcerciseSelect}/>
+                <RightPane styles={classes} excercise={selectedExcercise}/>
             </Grid>
         )
     }
