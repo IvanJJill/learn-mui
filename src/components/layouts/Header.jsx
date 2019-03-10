@@ -10,7 +10,7 @@ class Header extends Component {
                 <AppBar position='static'>
                     <Toolbar>
                         <IconButton color='inherit' aria-label="Menu"> 
-                            <MenuIcon open={true}/>
+                            <MenuIcon open={false}/>
                         </IconButton>
                         <Typography variant='h6' color='inherit'  >
                             Content
