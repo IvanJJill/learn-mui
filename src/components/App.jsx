@@ -38,7 +38,7 @@ class App extends Component {
     const { category, selectedExcercise } = this.state;
     return (
       <Fragment>
-        <Header />
+        <Header muscles={muscles}/>
         <Content
           excercises={excercises}
           category={category}
