@@ -33,12 +33,21 @@ class App extends Component {
     this.setState(({ excercises }) => ({ selectedExcercise: excercises.find(ex => ex.id === id) }));
   }
 
+  handleExcerciseCreate = excercise => {
+    excercise.id = excercise.title.split(' ').join('_');
+    const excercises = [...this.state.excercises, excercise];
+    this.setState({excercises})
+  }
+
   render() {
     const excercises = this.getExcercisesByMuscule();
     const { category, selectedExcercise } = this.state;
     return (
       <Fragment>
-        <Header muscles={muscles}/>
+        <Header 
+        muscles={muscles}
+        onExcerciseCreate={this.handleExcerciseCreate}
+        />
         <Content
           excercises={excercises}
           category={category}

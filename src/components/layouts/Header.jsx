@@ -29,7 +29,7 @@ class Header extends Component {
                         <Typography variant='h6' color='inherit' style={styles.grow} >
                             Content
                         </Typography>
-                        <Create muscles={this.props.muscles}/>
+                        <Create muscles={this.props.muscles} onCreate={this.props.onExcerciseCreate}/>
                     </Toolbar>
                 </AppBar>
             </Fragment>
