@@ -1,9 +1,12 @@
 import React, { Component, Fragment } from 'react';
-import { Grid, Paper, Typography, List, ListItem, ListItemText } from '@material-ui/core';
+import { Grid, Paper, Typography, List, ListItem, ListItemText, IconButton } from '@material-ui/core';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 
 export default class LeftPane extends Component {
     render() {
-        const { styles, excercises, category, onSelect } = this.props;
+        const { styles, excercises, category, onSelect, onDelete, onEdit } = this.props;
         return (
             <Grid item sm={5}>
                 <Paper className={styles.paper}>
@@ -23,6 +26,20 @@ export default class LeftPane extends Component {
                                             onClick={() => onSelect(id)}
                                         >
                                             <ListItemText primary={title} />
+                                            <ListItemSecondaryAction>
+                                                <IconButton
+                                                    aria-label="Edit"
+                                                    onClick={() => onEdit(id)}
+                                                >
+                                                    <EditIcon />
+                                                </IconButton>
+                                                <IconButton
+                                                    aria-label="Delete"
+                                                    onClick={() => onDelete(id)}
+                                                >
+                                                    <DeleteIcon />
+                                                </IconButton>
+                                            </ListItemSecondaryAction>
                                         </ListItem>
                                     </List>
                                 )}

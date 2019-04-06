@@ -14,14 +14,17 @@ class App extends Component {
   }
 
   getExcercisesByMuscule = () => {
+    const initialExcercises = muscles.reduce((excercises, category) => ({
+        ...excercises,
+        [category.id]:[]
+      }), {})
+
     return Object.entries(
       this.state.excercises.reduce((excercises, excercise) => {
         let { muscule } = excercise;
-        excercises[muscule] = excercises[muscule]
-          ? [...excercises[muscule], excercise]
-          : [excercise];
+        excercises[muscule] = [...excercises[muscule], excercise];
         return excercises;
-      }, {})
+      }, initialExcercises)
     )
   }
 
@@ -34,16 +37,29 @@ class App extends Component {
   }
 
   handleExcerciseCreate = excercise => {
-    excercise.id = excercise.title.split(' ').join('_');
-    const excercises = [...this.state.excercises, excercise];
-    this.setState({excercises})
+    excercise.id = excercise.title.toLowerCase().replace(/ /g, '-');
+    this.setState({excercises: [...this.state.excercises, excercise]});
   }
+
+  handleDeleteExcercise = id => {
+    const {selectedExcercise, excercises } = this.state;
+    if(selectedExcercise.id === id) {
+      this.setState({selectedExcercise: {}});
+    }
+    this.setState({excercises: excercises.filter(excercise => excercise.id !== id )});
+  }
+
+  handleEditExcercise = id => {
+
+  }
+
+  handleSaveExcercise = excecrcise => {}
 
   render() {
     const excercises = this.getExcercisesByMuscule();
     const { category, selectedExcercise } = this.state;
     return (
-      <Fragment>
+      <>
         <Header 
         muscles={muscles}
         onExcerciseCreate={this.handleExcerciseCreate}
@@ -53,13 +69,16 @@ class App extends Component {
           category={category}
           selectedExcercise={selectedExcercise}
           onExcerciseSelect={this.onExcerciseSelect}
+          onDeleteExcercise={this.handleDeleteExcercise}
+          onEditExcercise={this.handleEditExcercise}
+          onSaveExcercise={this.handleSaveExcercise}
         />
         <Footer
           muscles={muscles}
           onSelect={this.footerCategorySelect}
           category={category}
         />
-      </Fragment>
+      </>
     );
   }
 }

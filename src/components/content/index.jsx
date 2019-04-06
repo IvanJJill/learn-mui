@@ -8,14 +8,21 @@ import { withStyles } from '@material-ui/core/styles';
 class Content extends Component {
 
     render() {
-        const {classes, excercises, category, onExcerciseSelect, selectedExcercise} = this.props;
+        const { classes, excercises, category, onExcerciseSelect, selectedExcercise, onDeleteExcercise, onEditExcercise } = this.props;
         return (
             <Grid container spacing={16}>
-                <LeftPane styles={classes} excercises={excercises} category={category} onSelect={onExcerciseSelect}/>
-                <RightPane styles={classes} excercise={selectedExcercise}/>
+                <LeftPane
+                    styles={classes}
+                    excercises={excercises}
+                    category={category}
+                    onSelect={onExcerciseSelect}
+                    onDelete={onDeleteExcercise}
+                    onEdit={onEditExcercise}
+                />
+                <RightPane styles={classes} excercise={selectedExcercise} />
             </Grid>
         )
     }
 }
 
-export default withStyles (styles)(Content)
+export default withStyles(styles)(Content)
