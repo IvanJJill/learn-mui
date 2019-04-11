@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import {AppBar, Toolbar, IconButton, Typography} from '@material-ui/core';
 import MenuIcon from '@material-ui/core/Menu';
-import Create from '../dialogs/Create';
+import CreateDialog from '../dialogs/CreateDialog';
 
 const styles = {
     root: {
@@ -29,7 +29,7 @@ class Header extends Component {
                         <Typography variant='h6' color='inherit' style={styles.grow} >
                             Content
                         </Typography>
-                        <Create muscles={this.props.muscles} onCreate={this.props.onExcerciseCreate}/>
+                        <CreateDialog muscles={this.props.muscles} onCreate={this.props.onExcerciseCreate}/>
                     </Toolbar>
                 </AppBar>
             </Fragment>

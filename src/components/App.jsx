@@ -10,14 +10,15 @@ class App extends Component {
   state = {
     excercises,
     category: 'all',
-    selectedExcercise: {}
+    selectedExcercise: {},
+    editMode: false,
   }
 
   getExcercisesByMuscule = () => {
     const initialExcercises = muscles.reduce((excercises, category) => ({
-        ...excercises,
-        [category.id]:[]
-      }), {})
+      ...excercises,
+      [category.id]: []
+    }), {})
 
     return Object.entries(
       this.state.excercises.reduce((excercises, excercise) => {
@@ -33,36 +34,42 @@ class App extends Component {
   }
 
   onExcerciseSelect = (id) => {
-    this.setState(({ excercises }) => ({ selectedExcercise: excercises.find(ex => ex.id === id) }));
+    this.setState(({ excercises }) => ({ selectedExcercise: excercises.find(ex => ex.id === id), editMode: false }));
   }
 
   handleExcerciseCreate = excercise => {
     excercise.id = excercise.title.toLowerCase().replace(/ /g, '-');
-    this.setState({excercises: [...this.state.excercises, excercise]});
+    this.setState({ excercises: [...this.state.excercises, excercise] });
   }
 
   handleDeleteExcercise = id => {
-    const {selectedExcercise, excercises } = this.state;
-    if(selectedExcercise.id === id) {
-      this.setState({selectedExcercise: {}});
+    const { selectedExcercise, excercises } = this.state;
+    if (selectedExcercise.id === id) {
+      this.setState({ selectedExcercise: {} });
     }
-    this.setState({excercises: excercises.filter(excercise => excercise.id !== id )});
+    this.setState({ excercises: excercises.filter(excercise => excercise.id !== id) });
   }
 
   handleEditExcercise = id => {
-
+    this.setState(({ excercises }) => ({ selectedExcercise: excercises.find(ex => ex.id === id), editMode: true }));
   }
 
-  handleSaveExcercise = excecrcise => {}
+  handleSaveExcercise = excercise => {
+    const { excercises } = this.state;
+    this.setState({ excecrcises: [
+      ...excercises.filter(ex => ex.id !== excercise.id),
+      excercise
+    ] });
+  }
 
   render() {
     const excercises = this.getExcercisesByMuscule();
-    const { category, selectedExcercise } = this.state;
+    const { category, selectedExcercise, editMode } = this.state;
     return (
       <>
-        <Header 
-        muscles={muscles}
-        onExcerciseCreate={this.handleExcerciseCreate}
+        <Header
+          muscles={muscles}
+          onExcerciseCreate={this.handleExcerciseCreate}
         />
         <Content
           excercises={excercises}
@@ -72,6 +79,8 @@ class App extends Component {
           onDeleteExcercise={this.handleDeleteExcercise}
           onEditExcercise={this.handleEditExcercise}
           onSaveExcercise={this.handleSaveExcercise}
+          editMode={editMode}
+          muscles={muscles}
         />
         <Footer
           muscles={muscles}
