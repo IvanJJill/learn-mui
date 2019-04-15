@@ -9,17 +9,22 @@ import ExcerciseForm from './forms/ExcerciseForm';
 const styles = theme => ({
     formControl: {
         width: "500px"
-    }
+    },
+    button: {
+        marginTop: '1em',
+        width:'10em'
+    },
 })
 
 class EditDialog extends Component {
 
     Actions = () => {
+        const {classes} = this.props
         return (
             <>
-                <Button type="submit" color="primary" variant="contained">
+                <Button type="submit" color="primary" variant="contained" className={classes.button}>
                     Save
-        </Button>
+                </Button>
             </>
         )
     }
@@ -29,9 +34,8 @@ class EditDialog extends Component {
             <Fragment>
                 <Typography variant="h5">Edit an excercise</Typography>
                 <ExcerciseForm
-                    onFinish={() => { }}
-                    onSubmit={this.props.onCreate}
-                    actions={actions => (<this.Actions />)}
+                    onSubmit={this.props.onSubmit}
+                    actions={() => (<this.Actions />)}
                     {...this.props}
                 />
             </Fragment>

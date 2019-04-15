@@ -13,6 +13,12 @@ import ExcerciseForm from './forms/ExcerciseForm';
 const styles = theme => ({
   formControl: {
     width: "300px"
+  },
+  actions: {
+    margin: theme.spacing.unit,
+    marginTop: "1em",
+    width: "40%",
+    display: "inline-block"
   }
 })
 
@@ -30,15 +36,16 @@ class CreateDialog extends Component {
   };
 
   Actions = () => {
+    const classes = this.props.classes
     return (
-      <>
-        <Button onClick={this.handleClose} color="primary">
-          Cancel
-        </Button>
-        <Button type="submit" color="primary" variant="contained">
+      <div style={{textAlign: "center"}}>
+        <Button type="submit" color="primary" variant="contained" className={classes.actions}>
           Create
         </Button>
-      </>
+        <Button onClick={this.handleClose} variant="outlined" color="secondary" className={classes.actions}>
+          Cancel
+        </Button>
+      </div>
     )
   }
 
@@ -65,7 +72,7 @@ class CreateDialog extends Component {
             <ExcerciseForm
               onFinish={this.handleClose}
               onSubmit={this.props.onCreate}
-              actions={actions => ( <this.Actions />)}
+              actions={() => ( <this.Actions />)}
               {...this.props}
             />
           </DialogContent>

@@ -1,29 +1,29 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import { FormControl } from '@material-ui/core';
 
-export default class ExcerciseForm extends Component {
+const emptyExcercise = {
+    excercise: {
+        title: '',
+        description: '',
+        muscule: '',
+    }
+}
 
-    constructor(props) {
-        super(props)
-        if (props.excercise) {
-            this.state = {
-                excercise: props.excercise
-            }
-        } else {
-            this.state = {
-                excercise: {
-                    title: '',
-                    description: '',
-                    muscule: '',
-                }
-            }
+export default class ExcerciseForm extends PureComponent {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            excercise: props.excercise || emptyExcercise.excercise
         }
     }
 
+    static getDerivedStateFromProps = ({ excercise }) => ( excercise ? { excercise } : null )
+    
     handleChange = name => ({ target: { value } }) => {
         this.setState({
             excercise: {
@@ -32,20 +32,16 @@ export default class ExcerciseForm extends Component {
             }
         });
     };
+    
 
-    handleSubmit = (e) => {
+    handleSubmit = e => {
         // TODO: form validation
+        const { onSubmit, onFinish } = this.props,
+            { excercise } = this.state
         e.preventDefault();
-        const { excercise } = this.state;
-        this.props.onSubmit(excercise);
-        this.setState({
-            excercise: {
-                title: '',
-                description: '',
-                muscule: '',
-            }
-        })
-        this.props.onFinish();
+        onSubmit(excercise);
+        this.setState(emptyExcercise)
+        !!onFinish && onFinish();
     }
 
     render() {

@@ -45,7 +45,7 @@ class App extends Component {
   handleDeleteExcercise = id => {
     const { selectedExcercise, excercises } = this.state;
     if (selectedExcercise.id === id) {
-      this.setState({ selectedExcercise: {} });
+      this.setState({ selectedExcercise: {}, editMode: false });
     }
     this.setState({ excercises: excercises.filter(excercise => excercise.id !== id) });
   }
@@ -56,10 +56,13 @@ class App extends Component {
 
   handleSaveExcercise = excercise => {
     const { excercises } = this.state;
-    this.setState({ excecrcises: [
+    this.setState({ excercises: [
       ...excercises.filter(ex => ex.id !== excercise.id),
       excercise
-    ] });
+    ], 
+    selectedExcercise: {},
+    editMode: false
+   });
   }
 
   render() {
