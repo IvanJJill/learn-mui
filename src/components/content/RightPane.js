@@ -5,13 +5,13 @@ import EditDialog from '../dialogs/EditDialog'
 import styles from './paneStyle';
 
 
-export default class RightPane extends Component {
+class RightPane extends Component {
     render() {
         const { styles, excercise: { id, title, description }, editMode } = this.props,
             { excercise, muscles, onSave } = this.props;
 
         return (
-            <Grid item sm>
+            <Grid item xs={12} sm={6}>
 
                 <Paper className={styles.paper}>
                     {editMode ?
@@ -23,10 +23,10 @@ export default class RightPane extends Component {
                                 <>
                                     <Typography variant="h3">
                                         Welcome!
-                            </Typography>
+                                    </Typography>
                                     <Typography variant="body2" className={styles.welcomeBody}>
                                         Will display an excercise when selected in Left Pane
-                            </Typography>
+                                    </Typography>
                                 </>
                             }
                             {
@@ -47,3 +47,5 @@ export default class RightPane extends Component {
         )
     }
 }
+
+export default withStyles(styles)(RightPane)

@@ -8,7 +8,7 @@ export default class LeftPane extends Component {
     render() {
         const { styles, excercises, category, onSelect, onDelete, onEdit } = this.props;
         return (
-            <Grid item sm={5}>
+            <Grid item sm={6} xs={12}>
                 <Paper className={styles.paper}>
                     {excercises.map(([group, excercises]) =>
                         category === 'all' || category === group

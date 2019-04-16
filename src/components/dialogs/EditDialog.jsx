@@ -8,7 +8,7 @@ import ExcerciseForm from './forms/ExcerciseForm';
 
 const styles = theme => ({
     formControl: {
-        width: "500px"
+        width: "90%"
     },
     button: {
         marginTop: '1em',

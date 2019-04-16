@@ -12,7 +12,7 @@ import ExcerciseForm from './forms/ExcerciseForm';
 
 const styles = theme => ({
   formControl: {
-    width: "300px"
+    width: "90%"
   },
   actions: {
     margin: theme.spacing.unit,
