@@ -21,7 +21,7 @@ class RightPane extends Component {
                         : <>
                             {!!!id &&
                                 <>
-                                    <Typography variant="h3">
+                                    <Typography variant="h3" color='secondary'>
                                         Welcome!
                                     </Typography>
                                     <Typography variant="body2" className={styles.welcomeBody}>
@@ -32,7 +32,7 @@ class RightPane extends Component {
                             {
                                 !!id &&
                                 <>
-                                    <Typography variant="h4">
+                                    <Typography variant="h4" color='secondary'>
                                         {title}
                                     </Typography>
                                     <Typography variant="body1" className={styles.welcomeBody}>

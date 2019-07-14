@@ -63,6 +63,7 @@ export default class ExcerciseForm extends PureComponent {
                     label="Description"
                     className={classes.formControl}
                     multiline
+                    rows="3"
                     rowsMax="4"
                     value={description}
                     onChange={this.handleChange('description')}

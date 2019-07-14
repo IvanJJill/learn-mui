@@ -54,7 +54,7 @@ class CreateDialog extends Component {
       <Fragment>
         <Fab
           size="medium"
-          color="primary"
+          color="secondary"
           aria-label="Add"
           onClick={this.handleClickOpen}
         >

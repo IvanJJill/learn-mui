@@ -16,6 +16,7 @@ export default class LeftPane extends Component {
                                 <Typography
                                     variant="h6"
                                     style={{ textTransform: "capitalize" }}
+                                    color='secondary'
                                 >
                                     {group}
                                 </Typography>
