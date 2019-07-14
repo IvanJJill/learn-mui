@@ -2,11 +2,15 @@ import React from 'react';
 import { Paper, Tabs, Tab } from '@material-ui/core';
 import withWidth from '@material-ui/core/withWidth';
 import { withStyles } from '@material-ui/core/styles';
+import { isAbsolute } from 'path';
 
 
 const styles = theme => ({
   footer: {
-    marginTop: '1em'
+    marginTop: '1em',
+    position: 'absolute',
+    bottom: 0,
+    width: '100%'
   }
 })
 

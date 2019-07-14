@@ -1,9 +1,9 @@
 const styles = theme => ({
     paper: {
-        height: 500,
+        height: 'calc(100vh - 48px - 64px - 45px)',
         padding: 20,
         overflowY: "auto",
-        marginTop: "1em"
+        margin: "1rem .5rem 1rem .5rem",
     },
 
     welcomeBody: {

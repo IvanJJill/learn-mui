@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 import { blue, orange } from '@material-ui/core/colors';
+
+import App from './components/App';
 
 const theme = createMuiTheme({
     palette: {

@@ -1,7 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Header, Footer } from './layouts';
 import Content from './content';
-import 'typeface-roboto';
 
 import { muscles, excercises } from '../store';
 
