@@ -20,6 +20,9 @@ module.exports = {
     new CleanWebpackPlugin()
   ],
   resolve: {
+      alias: {
+          '@material-ui/core': '@material-ui/core/es',
+      },
     extensions: [".js", ".jsx"]
   },
   stats: 'errors-only',
